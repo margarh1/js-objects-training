@@ -45,3 +45,42 @@
 */
 
 // YOUR CODE HERE
+
+function parseQueryString(string) {
+    var newObject = {};
+    var newString = string.split('&');
+    var currentKey;
+    var currentValue;
+
+    for (keyValue of newString) {
+        var currentKeyValue = keyValue.split('=');
+        currentKey = currentKeyValue[0];
+        currentValue = currentKeyValue[1];
+        newObject[currentKey] = currentValue;
+    }
+
+    return newObject;
+}
+
+console.log(parseQueryString(''));
+console.log(parseQueryString('a=1'));
+console.log(parseQueryString('first=alpha&last=omega'));
+console.log(parseQueryString("a=apple&b=beet&b=blueberry&c=&d=10"));
+
+function convertToQueryParameter(object) {
+    var keyArray = Object.keys(object);
+    var keyValueArray = [];
+    var newString = [];
+
+    for (var idx = 0; idx < keyArray.length; idx++) {
+        keyValueArray.push(keyArray[idx]);
+        keyValueArray.push(object[keyArray[idx]]);
+        keyValueArray = keyValueArray.join('=');
+        newString.push(keyValueArray);
+        keyValueArray = [];
+    }
+
+    return newString.join('&');
+}
+
+console.log(convertToQueryParameter({first: 'alpha', last: 'omega'}));

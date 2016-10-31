@@ -31,3 +31,21 @@
 */
 
 // YOUR CODE HERE
+
+function letterCount(string) {
+  var letters = {};
+  var justLetters = string.toLowerCase().replace(/\W/g, '');
+
+  for (var idx = 0; idx < justLetters.length; idx++) {
+    if (letters[justLetters[idx]] === undefined) {
+      letters[justLetters[idx]] = 1 / justLetters.length;
+    } else {
+      letters[justLetters[idx]] += 1 / justLetters.length;
+    }
+  }
+
+  return letters;
+}
+
+console.log(letterCount('apple'));
+

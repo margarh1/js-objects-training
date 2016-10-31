@@ -38,3 +38,13 @@
 */
 
 // YOUR CODE HERE
+
+var table = [{steps: 0}, null, null, null];
+
+function pingPong(board) {
+    if (table[0] !== null) {
+        moveRight();
+    } else if (table[table.length - 1] !== null) {
+        moveLeft();
+    }
+}

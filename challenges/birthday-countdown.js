@@ -34,3 +34,17 @@
 */
 
 // YOUR CODE HERE
+
+function daysUntilDate(string) {
+    var dateAsArray = string.split('/');
+    var year = dateAsArray[2];
+    var month = dateAsArray[0] - 1;
+    var day = dateAsArray[1];
+    var birthDate = new Date(year, month, day);
+    var timeUntilDate = Date.now() - birthDate;
+
+    console.log(timeUntilDate);
+}
+
+console.log(daysUntilDate('10/31/2013'));
+console.log(daysUntilDate('4/01/1975'));
