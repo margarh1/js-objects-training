@@ -42,9 +42,45 @@
 var table = [{steps: 0}, null, null, null];
 
 function pingPong(board) {
-    if (table[0] !== null) {
-        moveRight();
-    } else if (table[table.length - 1] !== null) {
-        moveLeft();
-    }
+  var newBoard = [];
+  var totalSteps = 0;
+  if (table[0] !== null) {
+      newBoard = moveRight(board, totalSteps);
+  } else if (table[table.length - 1] !== null) {
+      newBoard = moveLeft(board, totalSteps);
+  }
+
 }
+
+function moveRight(ballToRight, stepRight) {
+  var movedRight = [];
+  var currentSteps = stepRight;
+  for (var idx = 0; idx <= ballToRight; idx++) {
+    if (ballToRight[idx] !== null) {
+      movedRight.push(ballToRight[idx]);
+      currentSteps++;
+    } else if ((ballToRight[idx - 1] !== null) && (ballToRight[idx - 1] !== undefined)) {
+      movedRight.unshift(null);
+    } else {
+      movedRight.push(null);
+    }
+  }
+  console.log(movedRight, stepRight);
+}
+
+function moveLeft(ballToLeft, stepLeft) {
+
+}
+
+var table = [{steps: 0}, null, null, null];
+
+  pingPong(table); //=> [null, {steps: 1}, null, null]
+  pingPong(table); //=> [null, null, {steps: 2}, null]
+  pingPong(table); //=> [null, null, null, {steps: 3}]
+  pingPong(table); //=> [null, null, {steps: 4}, null]
+  pingPong(table); //=> [null, {steps: 5}, null, null]
+  pingPong(table); //=> [{steps: 6}, null, null, null]
+  pingPong(table); //=> [null, {steps: 7}, null, null]
+
+  table; //=> [null, {steps: 7}, null, null]
+
